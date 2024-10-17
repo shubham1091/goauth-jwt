@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "85668f31-62db-408b-8abf-e2fb3e16c386",
+		"name": "Goauth-jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32762383"
+	},
+	"item": [
+		{
+			"name": "Health check",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"First_name\": \"shubham\",\r\n    \"Last_name\": \"verma\",\r\n    \"Email\": \"shubham@gmail.com\",\r\n    \"Phone\": \"123456789\",\r\n    \"User_type\": \"ADMIN\",\r\n    \"Password\": \"testpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"First_name\": \"dummy\",\r\n    \"Last_name\": \"user\",\r\n    \"Email\": \"dummy@gmail.com\",\r\n    \"Phone\": \"987654321\",\r\n    \"User_type\": \"USER\",\r\n    \"Password\": \"testpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Random User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"First_name\": \"{{$randomFirstName}}\",\r\n    \"Last_name\": \"{{$randomLastName}}\",\r\n    \"Email\": \"{{$randomEmail}}\",\r\n    \"Phone\": \"{{$randomPhoneNumber}}\",\r\n    \"User_type\": \"USER\",\r\n    \"Password\": \"{{$randomPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"shubham@gmail.com\",\r\n    \"Password\": \"testpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"dummy@gmail.com\",\r\n    \"Password\": \"testpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InNodWJoYW1AZ21haWwuY29tIiwiRmlyc3RfbmFtZSI6InNodWJoYW0iLCJMYXN0X25hbWUiOiJ2ZXJtYSIsIlVpZCI6IjY3MTEwZWJlYWYwNGZhOGY4Y2FkYTBkMiIsIlVzZXJfdHlwZSI6IkFETUlOIiwiZXhwIjoxNzI5MjU4MDc5LCJpc3MiOiJnb2F1dGgtand0In0.zfmR4dod-Cjx8NvGY-0jxNfYbwuJkB7X0CPioPNDyL8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/users?recordPerPage=2&page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "recordPerPage",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InNodWJoYW1AZ21haWwuY29tIiwiRmlyc3RfbmFtZSI6InNodWJoYW0iLCJMYXN0X25hbWUiOiJ2ZXJtYSIsIlVpZCI6IjY3MTEwZWJlYWYwNGZhOGY4Y2FkYTBkMiIsIlVzZXJfdHlwZSI6IkFETUlOIiwiZXhwIjoxNzI5MjU4MDc5LCJpc3MiOiJnb2F1dGgtand0In0.zfmR4dod-Cjx8NvGY-0jxNfYbwuJkB7X0CPioPNDyL8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/users/67111706659154acb2e0e6be",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"67111706659154acb2e0e6be"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
